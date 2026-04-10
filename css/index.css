@@ -1,0 +1,345 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+/* 配置颜色 */
+html {
+  --text: #fff;
+  --background: #011337;
+  --header: #00ffff;
+  --title: #23e3e6;
+  --titleBg: #003e6d;
+  --titleBorder: #184c8b;
+  --number: #00ffff;
+  --boxBg: rgba(0, 38, 78, 0.4);
+  --boxBoder: #0c4787;
+  --boxBoderAngle: #66ffff;
+}
+/* .clearfix::before 作用：解决外边距塌陷问题 
+外边距塌陷：父子标签，都是块级，子级加margin影响父级位置*/
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: table;
+}
+.clearfix::after {
+  clear: both;
+}
+
+/* 布局 */
+body {
+  color: var(--text);
+}
+.wrap {
+  width: 100%;
+  height: 100vh;
+  padding: 0 10px 5px;
+  background-color: var(--background);
+  background-image: url('../image/bgImg.png');
+  background-size: cover;
+  display: grid;
+  grid-template-rows: 3fr 3fr 16fr 10fr 5fr;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-gap: 5px 10px;
+  grid-template-areas:
+    'num0 num0 num0'
+    'num1 num3 num6'
+    'num1 num4 num6'
+    'num2 num4 num7'
+    'num2 num5 num7';
+}
+.num0 {
+  grid-area: num0;
+}
+.num1 {
+  grid-area: num1;
+}
+.num2 {
+  grid-area: num2;
+}
+.num3 {
+  grid-area: num3;
+}
+.num4 {
+  grid-area: num4;
+}
+.num5 {
+  grid-area: num5;
+}
+.num6 {
+  grid-area: num6;
+}
+.num7 {
+  grid-area: num7;
+}
+.wrap > div {
+  /* background-color: #00ffff; */
+}
+
+/* 公共样式 */
+.title {
+  position: relative;
+  height: 35px;
+  padding-left: 20px;
+  line-height: 35px;
+  font-weight: normal;
+  font-size: 17px;
+  letter-spacing: 7px;
+  color: var(--title);
+  background-color: var(--titleBg);
+}
+.title::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 4px;
+  height: 39px;
+  background-color: var(--titleBorder);
+  border-radius: 2px;
+}
+.boxStyle {
+  background: linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) left
+      top,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) left top,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) right top,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) right top,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) left bottom,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) left bottom,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) right bottom,
+    linear-gradient(var(--boxBoderAngle), var(--boxBoderAngle)) right bottom;
+  background-repeat: no-repeat;
+  background-size: 1px 8px, 8px 1px;
+  border: 1px solid var(--boxBoder);
+  background-color: var(--boxBg);
+}
+
+/* 标题 */
+.num0 {
+  text-align: center;
+  color: var(--header);
+  position: relative;
+}
+.num0 .header {
+  letter-spacing: 4px;
+  font-size: 23px;
+  line-height: 60px;
+  text-shadow: 6px 7px 4px BLACK;
+}
+.num0 .time {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  top: 10px;
+  right: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+.time .hh,
+.time .mm,
+.time .ss {
+  width: 60px;
+  height: 60px;
+  /* background-color: red; */
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.time .hh img,
+.time .mm img,
+.time .ss img {
+  position: absolute;
+  display: inline-block;
+}
+.time .hh img {
+  top: -12px;
+  left: -12px;
+  width: 84px;
+}
+.time .mm img {
+  top: -2px;
+  left: -3px;
+  width: 64px;
+}
+.time .ss img {
+  top: -9px;
+  left: -9px;
+  width: 78px;
+}
+.time .hh .number_hh,
+.time .mm .number_mm,
+.time .ss .number_ss {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  line-height: 60px;
+  color: var(--number);
+  text-shadow: 0px 0px 5px var(--number);
+}
+
+/* 第一部分 */
+.one_box,
+.two_box,
+.three_box,
+.five_box,
+.six_box,
+.seven_box {
+  width: 100%;
+  height: calc(100% - 35px);
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+/* 第一项 */
+.one_item1,
+.two_item1,
+.three_item1,
+.five_item,
+.six_item1,
+.seven_item1 {
+  margin-bottom: 5px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+}
+.moudle {
+  flex: 1;
+  margin-right: 5px;
+  text-align: center;
+  line-height: 25px;
+  padding-top: 5px;
+  text-overflow: ellipsis; /*超出部分的文字用省略号代替*/
+  overflow: hidden; /*超出部分隐藏*/
+  white-space: nowrap; /*强制不换行（一行显示）*/
+}
+.moudle:last-child {
+  margin-right: 0;
+}
+.moudle p:first-child {
+  font-size: 13px;
+}
+.moudle p:last-child {
+  font-size: 15px;
+  color: var(--number);
+  font-weight: 500;
+}
+.moudle p:last-child span {
+  font-size: 13px;
+}
+.one_item2,
+.one_item3,
+.six_item2,
+.seven_item2 {
+  flex: 1;
+  margin-bottom: 5px;
+}
+
+/* 第二部分 */
+.two_item2 {
+  flex: 1;
+}
+
+/* 第三部分 */
+.three_box,
+.five_box {
+  height: 100%;
+  margin-top: 0;
+}
+.three_item1,
+.five_item {
+  height: 100%;
+}
+.three_item1 .moudle p:first-child {
+  font-size: 16px;
+  line-height: 30px;
+}
+.three_item1 .moudle p:last-child {
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+/* 第五部分 */
+.five_item {
+  margin-bottom: 0;
+}
+.five_item .moudle {
+  display: flex;
+}
+.five_item .moudle .left,
+.five_item .moudle .right {
+  flex: 1;
+}
+.five_item .moudle .right {
+  text-align: left;
+  margin-top: 20px;
+}
+.five_item .moudle p:first-child {
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.five_item .moudle p:last-child {
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: bolder;
+}
+
+/* 第六部分 */
+.six_box {
+  margin-top: 10px;
+}
+.six_item1 {
+  flex: 6;
+}
+.six_item1 .moudle:first-child {
+  flex: 2;
+  margin-right: 10px;
+}
+.six_item1 .moudle:last-child {
+  flex: 3;
+}
+.six_item2 {
+  flex: 5;
+}
+.six_item2 .video {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+.six_item2 video {
+  width: 96%;
+  height: 200px;
+  margin: 2% 2% 1%;
+  object-fit: cover;
+}
+.six_item1 .moudle .moudleTitle {
+  padding-left: 20px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: left;
+  color: var(--text);
+}
+.six_item1 .moudle .moudleTitle span {
+  color: var(--number);
+  font-weight: bold;
+  font-size: 15px;
+}
+.six_item1 .moudle .moudleTitle i {
+  font-style: normal;
+  color: var(--number);
+}
+.six_chart1,
+.six_chart2 {
+  width: 100%;
+  height: calc(100% - 30px);
+}
+
+/* 第七部分 */
+.num7 {
+  margin-top: 5px;
+}
